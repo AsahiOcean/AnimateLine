@@ -2,4 +2,4 @@
 Simple line drawing | Простая рисовалка линии
 ![alt-текст][logo]
 
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Текст заголовка логотипа 2"
+[logo]: https://github.com/AsahiOcean/AnimateLine/blob/master/Example.gif "Текст заголовка логотипа 2"
