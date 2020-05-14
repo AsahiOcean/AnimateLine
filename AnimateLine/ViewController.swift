@@ -1,8 +1,22 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var lastCGPoint: CGPoint?; let DotColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+    var lastCGPoint: CGPoint?
+    var DotColor = UIColor.black
+    var LineWidth: Float = 3
 
+    @IBOutlet weak var CollectionColor: UICollectionView!
+    // SliderLineWidth
+    @IBOutlet weak var SliderLineWidth: UISlider! {
+        didSet{
+            SliderLineWidth.transform = CGAffineTransform(rotationAngle: CGFloat(Float.pi*1.5))
+            SliderLineWidth.layer.frame = CGRect(x: 20, y: UIScreen.main.bounds.height - CollectionColor.frame.height * 4, width: SliderLineWidth.frame.width, height: 200)
+        }
+    }
+    @IBAction func ChangeLineWidth(_ sender: UISlider) {
+        self.LineWidth = sender.value
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -18,8 +32,7 @@ class ViewController: UIViewController {
         }
     }
 
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) { if let touch = touches.first {
         let position = touch.location(in: view)
         self.lastCGPoint = position
         view!.addSubview(Dot(pos: position))
@@ -33,8 +46,8 @@ class ViewController: UIViewController {
         path.move(to: start)
         path.addLine(to: end)
         shapeLayer.fillColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0).cgColor
-        shapeLayer.strokeColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1).cgColor
-        shapeLayer.lineWidth = 4
+        shapeLayer.strokeColor = self.DotColor.cgColor
+        shapeLayer.lineWidth = CGFloat(self.LineWidth)
         shapeLayer.path = path.cgPath
         view.layer.addSublayer(shapeLayer)
         let animation = CABasicAnimation(keyPath: "strokeEnd")
@@ -45,8 +58,25 @@ class ViewController: UIViewController {
     
     func Dot(pos: CGPoint) -> UIView {
         let dot = UIView(frame: CGRect(x: pos.x, y: pos.y, width: 15, height: 15))
-        dot.backgroundColor = DotColor
+        dot.backgroundColor = self.DotColor
         dot.layer.cornerRadius = dot.frame.width / 2
         return dot
+    }
+}
+
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return Colors.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCell", for: indexPath) as! ColorCell
+        cell.backgroundColor = Colors[indexPath.row]
+        cell.layer.cornerRadius = cell.frame.width / 2
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.DotColor = Colors[indexPath.row]
     }
 }
