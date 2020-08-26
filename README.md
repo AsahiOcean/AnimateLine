@@ -1,3 +1,2 @@
 # AnimateLine
-![alt-текст](https://github.com/AsahiOcean/AnimateLine/blob/master/Example.gif "")
-![alt-текст](https://github.com/AsahiOcean/AnimateLine/blob/master/ScreenShot.png "")
+![](https://media.giphy.com/media/f5q3FIKLKr9uUlhlOE/source.gif)
