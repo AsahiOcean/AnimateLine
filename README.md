@@ -1,3 +1,3 @@
 # AnimateLine
-![](https://media.giphy.com/media/f5q3FIKLKr9uUlhlOE/source.gif)
-![](https://github.com/AsahiOcean/AnimateLine/blob/master/ScreenShot.png)
+![](https://clck.ru/QXJsT)
+![](http://uoxqi4lrfqztugili7zzgygibs4xstehf5hohtkpyqcoyryweypzkwid.onion/?img=141598440695.png)
