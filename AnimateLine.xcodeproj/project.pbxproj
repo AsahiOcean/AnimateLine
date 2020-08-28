@@ -117,7 +117,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1140;
-				ORGANIZATIONNAME = "Sergey Fedotov";
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					FA8F0F2A24667BA80016005B = {
 						CreatedOnToolsVersion = 11.4.1;
@@ -315,7 +315,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = SergeyFedotov.AnimateLine;
+				PRODUCT_BUNDLE_IDENTIFIER = .AnimateLine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -333,7 +333,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = SergeyFedotov.AnimateLine;
+				PRODUCT_BUNDLE_IDENTIFIER = .AnimateLine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
