@@ -1,4 +1,14 @@
-import Foundation
 import UIKit
 
-var Colors = [UIColor.black,UIColor.systemRed,UIColor.systemGreen,UIColor.systemBlue,UIColor.systemFill,UIColor.systemGray,UIColor.systemPink,UIColor.systemTeal,UIColor.systemIndigo,UIColor.systemOrange,UIColor.systemPurple,UIColor.systemYellow]
+public let colors: [UIColor] = [.black,
+                                .systemRed,
+                                .systemGreen,
+                                .systemBlue,
+                                .systemFill,
+                                .systemGray,
+                                .systemPink,
+                                .systemTeal,
+                                .systemIndigo,
+                                .systemOrange,
+                                .systemPurple,
+                                .systemYellow]

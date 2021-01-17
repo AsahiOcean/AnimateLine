@@ -4,7 +4,7 @@ class ViewController: UIViewController {
     var lastCGPoint: CGPoint?
     var DotColor = UIColor.black
     var LineWidth: Float = 3
-
+    
     @IBOutlet weak var CollectionColor: UICollectionView!
     // SliderLineWidth
     @IBOutlet weak var SliderLineWidth: UISlider! {
@@ -16,29 +16,29 @@ class ViewController: UIViewController {
     @IBAction func ChangeLineWidth(_ sender: UISlider) {
         self.LineWidth = sender.value
     }
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
-        let position = touch.location(in: view)
-        if let lastCGPoint = self.lastCGPoint {
-            self.drawLineFromPoint(start: lastCGPoint, toPoint: position, ofColor: DotColor, inView: self.view!)
-        }
-        self.lastCGPoint = position
-        view!.addSubview(Dot(pos: position))
+            let position = touch.location(in: view)
+            if let lastCGPoint = self.lastCGPoint {
+                self.drawLineFromPoint(start: lastCGPoint, toPoint: position, ofColor: DotColor, inView: self.view!)
+            }
+            self.lastCGPoint = position
+            view!.addSubview(Dot(pos: position))
         }
     }
-
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) { if let touch = touches.first {
         let position = touch.location(in: view)
         self.lastCGPoint = position
         view!.addSubview(Dot(pos: position))
-        }
     }
-
+    }
+    
     func drawLineFromPoint(start : CGPoint, toPoint end:CGPoint, ofColor lineColor: UIColor, inView view:UIView) {
         let shapeLayer = CAShapeLayer()
         shapeLayer.removeFromSuperlayer()
@@ -66,17 +66,17 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Colors.count
+        return colors.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCell", for: indexPath) as! ColorCell
-        cell.backgroundColor = Colors[indexPath.row]
+        cell.backgroundColor = colors[indexPath.row]
         cell.layer.cornerRadius = cell.frame.width / 2
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.DotColor = Colors[indexPath.row]
+        self.DotColor = colors[indexPath.row]
     }
 }
