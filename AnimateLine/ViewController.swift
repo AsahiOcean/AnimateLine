@@ -9,16 +9,12 @@ class ViewController: UIViewController {
     // SliderLineWidth
     @IBOutlet weak var SliderLineWidth: UISlider! {
         didSet{
-            SliderLineWidth.transform = CGAffineTransform(rotationAngle: CGFloat(Float.pi*1.5))
-            SliderLineWidth.layer.frame = CGRect(x: 20, y: UIScreen.main.bounds.height - CollectionColor.frame.height * 4, width: SliderLineWidth.frame.width, height: 200)
+            SliderLineWidth.transform = .init(rotationAngle: CGFloat(Float.pi*1.5))
+            SliderLineWidth.layer.frame = .init(x: 20, y: UIScreen.main.bounds.height - CollectionColor.frame.height * 4, width: SliderLineWidth.frame.width, height: 200)
         }
     }
     @IBAction func ChangeLineWidth(_ sender: UISlider) {
         self.LineWidth = sender.value
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -28,15 +24,16 @@ class ViewController: UIViewController {
                 self.drawLineFromPoint(start: lastCGPoint, toPoint: position, ofColor: DotColor, inView: self.view!)
             }
             self.lastCGPoint = position
-            view!.addSubview(Dot(pos: position))
+            view.addSubview(Dot(pos: position))
         }
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) { if let touch = touches.first {
-        let position = touch.location(in: view)
-        self.lastCGPoint = position
-        view!.addSubview(Dot(pos: position))
-    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let position = touch.location(in: view)
+            self.lastCGPoint = position
+            view.addSubview(Dot(pos: position))
+        }
     }
     
     func drawLineFromPoint(start : CGPoint, toPoint end:CGPoint, ofColor lineColor: UIColor, inView view:UIView) {
